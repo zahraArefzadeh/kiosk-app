@@ -33,13 +33,13 @@ export default function WidgetButton({
           exit={{ opacity: 0, filter: "blur(10px)" }}
           transition={{ duration: 0.5, ease: "easeInOut" }}
           onClick={onClick} 
-          className="fixed inset-0 w-full h-[100dvh] z-50 flex flex-col bg-slate-50 overflow-hidden cursor-pointer font-sans antialiased" 
+          className="fixed inset-0 w-full h-[100dvh] z-50 flex flex-col bg-slate-50 overflow-hidden cursor-pointer font-sans antialiased touch-manipulation safe-area-top safe-area-bottom" 
         >
        
-          {/* ✨ BACKGROUND BLOBS (Static, Blurred) */}
-          <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-blue-200/40 rounded-full blur-[120px] pointer-events-none mix-blend-multiply" />
-          <div className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-purple-200/40 rounded-full blur-[140px] pointer-events-none mix-blend-multiply" />
-          <div className="absolute top-[30%] right-[10%] w-[30%] h-[30%] bg-emerald-200/30 rounded-full blur-[100px] pointer-events-none mix-blend-multiply" />
+          {/* ✨ BACKGROUND BLOBS (Alive, Breathing) */}
+          <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-blue-200/40 rounded-full blur-[120px] pointer-events-none mix-blend-multiply animate-drift" />
+          <div className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-purple-200/40 rounded-full blur-[140px] pointer-events-none mix-blend-multiply animate-drift" style={{ animationDelay: '-8s' }} />
+          <div className="absolute top-[30%] right-[10%] w-[30%] h-[30%] bg-emerald-200/30 rounded-full blur-[100px] pointer-events-none mix-blend-multiply animate-drift" style={{ animationDelay: '-15s' }} />
 
           {/* --- Main Content Wrapper --- */}
           <div className="relative z-10 w-full max-w-md flex flex-col items-center pb-12 md:pb-16 px-4">

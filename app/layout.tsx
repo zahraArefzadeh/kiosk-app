@@ -39,7 +39,9 @@ export default function RootLayout({
     <html lang="en" style={{ height: '100%', overflow: 'hidden' }}>
       <head>
         <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="format-detection" content="telephone=no" />
       </head>
       <body
         className={`${dmSans.variable} ${outfit.variable} antialiased font-sans bg-gray-50`}

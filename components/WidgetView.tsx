@@ -125,24 +125,25 @@ qr: {
           animate="animate"
           exit="exit"
           transition={{ duration: MOTION.duration.normal, ease: MOTION.ease }}
-          className="fixed inset-0 w-full h-[100dvh] z-50 flex flex-col overflow-hidden widget-global-font bg-[#F5F5F7]"
+          className="fixed inset-0 w-full h-[100dvh] z-50 flex flex-col overflow-hidden widget-global-font bg-[#F5F5F7] safe-area-top safe-area-bottom"
           dir={isRTL ? "rtl" : "ltr"}
         >
           {/* ✨ PREMIUM ORGANIC MESH GRADIENTS */}
-          <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[70%] bg-[#0066CC]/15 rounded-[100%] blur-[160px] pointer-events-none mix-blend-multiply animate-pulse-slow" />
-          <div className="absolute bottom-[-20%] right-[-10%] w-[70%] h-[80%] bg-[#E5B89B]/20 rounded-[100%] blur-[180px] pointer-events-none mix-blend-multiply" />
-          <div className="absolute top-[40%] right-[20%] w-[40%] h-[40%] bg-[#F5F5F7]/40 rounded-full blur-[100px] pointer-events-none mix-blend-overlay" />
+          <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[70%] bg-[#0066CC]/15 rounded-[100%] blur-[160px] pointer-events-none mix-blend-multiply animate-drift" />
+          <div className="absolute bottom-[-20%] right-[-10%] w-[70%] h-[80%] bg-[#E5B89B]/20 rounded-[100%] blur-[180px] pointer-events-none mix-blend-multiply animate-drift" style={{ animationDelay: '-7s' }} />
+          <div className="absolute top-[40%] right-[20%] w-[40%] h-[40%] bg-[#F5F5F7]/40 rounded-full blur-[100px] pointer-events-none mix-blend-overlay animate-drift" style={{ animationDelay: '-13s' }} />
 
-          <div className="w-full h-full flex flex-col relative z-10 backdrop-blur-[60px] bg-white/20 border-x border-white/40 shadow-[0_0_60px_rgba(0,0,0,0.03)]">
+          <div className="w-full h-full flex flex-col relative z-10 backdrop-blur-[60px] bg-white/20 border-x border-white/40 shadow-[0_0_60px_rgba(0,0,0,0.03)] gpu-layer">
 
             {/* ─── ROW 1: HEADER ─── */}
             <header className="h-[6%] min-h-[52px] md:min-h-[64px] w-full flex-shrink-0 border-b border-white/30 bg-white/10 px-4 md:px-8 flex items-center justify-between relative">
               <div className="flex items-center z-10 min-w-[100px]">
-                <button 
-                  onClick={onClose} 
-                  className="p-3 bg-white/40 hover:bg-white/60 rounded-full border border-white/50 shadow-[0_2px_10px_rgba(0,0,0,0.02)] backdrop-blur-xl transition-all duration-300 active:scale-90 group"
+                <button
+                  onClick={onClose}
+                  className="p-2.5 md:p-3 bg-white/40 hover:bg-white/60 rounded-full border border-white/50 shadow-[0_2px_10px_rgba(0,0,0,0.02)] backdrop-blur-xl transition-all duration-300 active:scale-90 group touch-manipulation"
+                  aria-label="Close"
                 >
-                  <X size={20} className="text-[#1D1D1F] group-hover:text-black transition-colors" strokeWidth={2.5} />
+                  <X size={18} className="md:w-5 md:h-5 text-[#1D1D1F] group-hover:text-black transition-colors" strokeWidth={2.5} />
                 </button>
               </div>
 
@@ -155,7 +156,7 @@ qr: {
               <div className="flex justify-end z-10 min-w-max">
                 <button 
                   onClick={toggleAgentMute} 
-                  className="flex items-center gap-3 bg-white/40 hover:bg-white/60 p-1.5 pr-4 rounded-full border border-white/50 shadow-[0_2px_10px_rgba(0,0,0,0.02)] backdrop-blur-xl transition-all duration-300 active:scale-90 group cursor-pointer"
+                  className="flex items-center gap-2 md:gap-3 bg-white/40 hover:bg-white/60 p-1.5 pr-2.5 md:pr-4 rounded-full border border-white/50 shadow-[0_2px_10px_rgba(0,0,0,0.02)] backdrop-blur-xl transition-all duration-300 active:scale-90 group cursor-pointer touch-manipulation"
                 >
                   <div className={`p-2 rounded-full transition-all duration-300 flex items-center justify-center ${
                     isAgentMuted 
@@ -212,14 +213,14 @@ qr: {
                       </div>
                     </div>
                     <div className="w-full md:w-1/2 flex flex-col gap-4 md:gap-5 min-w-0 max-h-[40vh] md:max-h-none md:h-full relative z-10">
-                      <div className="flex-1 bg-white/30 backdrop-blur-[40px] border border-white/60 shadow-[0_8px_32px_rgba(0,0,0,0.04)] rounded-[20px] md:rounded-[32px] overflow-y-auto custom-scrollbar p-4 md:p-6" ref={messagesContainerRef}>
+                      <div className="flex-1 bg-white/30 backdrop-blur-[40px] border border-white/60 shadow-[0_8px_32px_rgba(0,0,0,0.04)] rounded-[20px] md:rounded-[32px] overflow-y-auto custom-scrollbar smooth-scroll p-4 md:p-6" ref={messagesContainerRef}>
                         <MessagesList
                           messages={messages} isAgentTyping={isAgentTyping} products={products}
                           onClearProducts={onClearProducts} generatedImages={generatedImages} onClearGeneratedImages={onClearGeneratedImages}
                           t={t}
                         />
                       </div>
-                      <div className="shrink-0 flex gap-3 overflow-x-auto hide-scrollbar pb-1 pt-1 px-1 touch-pan-x">
+                      <div className="shrink-0 flex gap-3 overflow-x-auto hide-scrollbar snap-scroll pb-1 pt-1 px-1 touch-pan-x">
                         {MOCK_SUGGESTED_QUESTIONS.map((question, index) => (
                           <button 
                             key={index}
@@ -234,7 +235,7 @@ qr: {
 
                   {/* ─── ROW 3: PRODUCTS ─── */}
                   <div style={{ flex: 53 }} className="w-full flex flex-col border-b border-white/20 min-h-0 gap-3 md:gap-5 max-h-[35vh] md:max-h-none">
-                    <div className="flex-1 overflow-y-auto custom-scrollbar relative bg-white/20 backdrop-blur-[10px] rounded-[24px] md:rounded-[36px] border border-white/40 p-2 md:p-6 shadow-inner">
+                    <div className="flex-1 overflow-y-auto custom-scrollbar smooth-scroll relative bg-white/20 backdrop-blur-[10px] rounded-[24px] md:rounded-[36px] border border-white/40 p-2 md:p-6 shadow-inner">
                       <EcosystemCatalog 
                         onAskAssistant={(productName) => {
                            setInputValue(`Can you give me more technical details about the ${productName}?`);
@@ -327,16 +328,16 @@ qr: {
                     </p>
                   </div>
 
-                  <div className="flex gap-4 mt-2 w-full">
-                    <button 
+                  <div className="flex gap-3 md:gap-4 mt-1 md:mt-2 w-full">
+                    <button
                       onClick={closeModal}
-                      className="flex-1 py-3.5 bg-gray-100 text-[#1D1D1F] rounded-full font-semibold hover:bg-gray-200 transition-colors active:scale-95"
+                      className="flex-1 py-3 md:py-3.5 bg-gray-100 text-[#1D1D1F] rounded-full font-semibold text-[15px] hover:bg-gray-200 transition-all active:scale-[0.97] touch-manipulation"
                     >
                       Cancel
                     </button>
-                    <button 
-                      onClick={closeModal} // You can hook this up to actual functions later
-                      className="flex-1 py-3.5 bg-[#0066CC] text-white rounded-full font-semibold hover:bg-[#0055AA] transition-colors shadow-lg shadow-blue-500/20 active:scale-95"
+                    <button
+                      onClick={closeModal}
+                      className="flex-1 py-3 md:py-3.5 bg-[#0066CC] text-white rounded-full font-semibold text-[15px] hover:bg-[#0055AA] transition-all shadow-lg shadow-blue-500/20 active:scale-[0.97] touch-manipulation"
                     >
                       {modalContent[activeModal].buttonText}
                     </button>

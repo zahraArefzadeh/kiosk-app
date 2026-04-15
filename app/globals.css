@@ -113,3 +113,108 @@ body {
 .animate-shimmer {
   animation: shimmer 3s ease-in-out infinite;
 }
+
+/* ─── Expert Micro-Polish ─── */
+
+/* 1. Selection color — branded, not default blue */
+::selection {
+  background: rgba(0, 102, 204, 0.15);
+  color: inherit;
+}
+
+/* 2. Smooth scroll with momentum on iOS */
+.smooth-scroll {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  overscroll-behavior: contain;
+}
+
+/* 3. Safe area padding for notched phones (iPhone X+) */
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+.safe-area-top {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+/* 4. Prevent rubber-banding on iOS while allowing inner scroll */
+html, body {
+  overscroll-behavior: none;
+}
+
+/* 5. Tap highlight — subtle, not the ugly blue flash */
+* {
+  -webkit-tap-highlight-color: rgba(0, 102, 204, 0.08);
+}
+
+/* 6. Focus-visible — only keyboard users see outlines (not clicks) */
+*:focus {
+  outline: none;
+}
+*:focus-visible {
+  outline: 2px solid rgba(0, 102, 204, 0.5);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* 7. Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* 8. Better text rendering globally */
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+}
+
+/* 9. GPU-accelerated glass panels — prevent repaint flicker */
+.gpu-layer {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* 10. Subtle pressed state for all interactive elements */
+button, [role="button"], .cursor-pointer {
+  transition: transform 0.15s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.15s ease,
+              box-shadow 0.2s ease;
+}
+
+/* 11. Scroll snap for horizontal carousels */
+.snap-scroll {
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+.snap-scroll > * {
+  scroll-snap-align: start;
+}
+
+/* 12. Prevent content jump when scrollbar appears/disappears */
+.stable-gutter {
+  scrollbar-gutter: stable;
+}
+
+/* 13. Image rendering — crisp product photos */
+img {
+  image-rendering: -webkit-optimize-contrast;
+}
+
+/* 14. Subtle backdrop noise texture for premium glass feel */
+@keyframes subtle-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(2px, -1px) scale(1.001); }
+  50% { transform: translate(-1px, 2px) scale(0.999); }
+  75% { transform: translate(1px, 1px) scale(1.001); }
+}
+.animate-drift {
+  animation: subtle-drift 20s ease-in-out infinite;
+}
