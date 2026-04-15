@@ -56,7 +56,7 @@ export default function WidgetButton({
             </h1>
             
             {/* متن راهنما برای محتوای آینده */}
-            <p className="mt-5 text-slate-500/80 text-xl   font-medium tracking-wide max-w-lg leading-relaxed">
+            <p className="mt-4 md:mt-5 text-slate-500/80 text-lg md:text-xl font-medium tracking-wide max-w-lg leading-relaxed">
 [ Space reserved for promotional video or content ]            </p>
           </div>
           

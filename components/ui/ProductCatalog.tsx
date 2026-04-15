@@ -181,7 +181,7 @@ export default function EcosystemCatalog({ onAskAssistant }: EcosystemCatalogPro
               initial="hidden"
               animate="show"
               exit="hidden"
-              className="relative w-full max-w-6xl h-full max-h-[800px] flex flex-col md:flex-row gap-6 z-10"
+              className="relative w-full max-w-[95vw] md:max-w-6xl h-full max-h-[90vh] md:max-h-[800px] flex flex-col md:flex-row gap-4 md:gap-6 z-10 px-2 md:px-0"
             >
               {/* Close Button - Global */}
               <button onClick={() => setSelectedProduct(null)} className="absolute -top-4 -right-4 md:top-0 md:-right-16 z-[60] bg-white/80 backdrop-blur-md text-slate-600 p-3 rounded-full hover:bg-slate-900 hover:text-white transition-all shadow-lg border border-slate-200">
@@ -239,7 +239,7 @@ export default function EcosystemCatalog({ onAskAssistant }: EcosystemCatalogPro
                 {/* 🏷️ Title Node */}
                 <motion.div variants={itemVariants} className="bg-white/90 backdrop-blur-md p-8 rounded-[32px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100">
                 
-                  <h2 className="text-4xl font-semibold tracking-tight text-slate-900 leading-none">
+                  <h2 className="text-2xl md:text-4xl font-semibold tracking-tight text-slate-900 leading-none">
                     {selectedProduct.name}
                   </h2>
                 </motion.div>
@@ -260,7 +260,7 @@ export default function EcosystemCatalog({ onAskAssistant }: EcosystemCatalogPro
                   {/* 💵 Value Node */}
                   <motion.div variants={itemVariants} className="flex-1 bg-slate-900/95 backdrop-blur-md text-white p-6 rounded-[24px] shadow-xl border border-slate-800 flex flex-col justify-center">
                     <p className="text-slate-400 text-xs uppercase tracking-widest mb-2 font-semibold">Price</p>
-                    <p className="text-4xl font-light tracking-tight">{selectedProduct.price}</p>
+                    <p className="text-2xl md:text-4xl font-light tracking-tight">{selectedProduct.price}</p>
                   </motion.div>
 
                   {/* 🤖 Action Node */}

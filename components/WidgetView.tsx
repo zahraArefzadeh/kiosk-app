@@ -96,19 +96,19 @@ export default function WidgetView(props: WidgetViewProps) {
   // Content configuration for modals
   const modalContent = {
 qr: {
-      icon: <QrCode size={180} className="text-[#1D1D1F]" strokeWidth={1} />,
+      icon: <QrCode className="w-[100px] h-[100px] md:w-[180px] md:h-[180px] text-[#1D1D1F]" strokeWidth={1} />,
       title: "Access on Mobile",
       description: "Scan this QR code to quickly open and use our AI assistant on your smartphone at any time.",
       buttonText: "Done"
     },
     details: {
-      icon: <UserPlus size={120} className="text-[#0066CC] mb-4" strokeWidth={1} />,
+      icon: <UserPlus className="w-[80px] h-[80px] md:w-[120px] md:h-[120px] text-[#0066CC] mb-2 md:mb-4" strokeWidth={1} />,
       title: "Share Contact Info",
       description: "Approve this request to let the AI securely collect your contact details for future follow-ups by our team.",
       buttonText: "Authorize AI"
     },
     support: {
-      icon: <Headset size={120} className="text-[#0066CC] mb-4" strokeWidth={1} />,
+      icon: <Headset className="w-[80px] h-[80px] md:w-[120px] md:h-[120px] text-[#0066CC] mb-2 md:mb-4" strokeWidth={1} />,
       title: "Contact Human Support",
       description: "Forward your inquiry to our technical team. A human specialist will review your request and get back to you.",
       buttonText: "Submit Request"
@@ -136,7 +136,7 @@ qr: {
           <div className="w-full h-full flex flex-col relative z-10 backdrop-blur-[60px] bg-white/20 border-x border-white/40 shadow-[0_0_60px_rgba(0,0,0,0.03)]">
 
             {/* ─── ROW 1: HEADER ─── */}
-            <header className="h-[6%] min-h-[64px] w-full flex-shrink-0 border-b border-white/30 bg-white/10 px-8 flex items-center justify-between relative">
+            <header className="h-[6%] min-h-[52px] md:min-h-[64px] w-full flex-shrink-0 border-b border-white/30 bg-white/10 px-4 md:px-8 flex items-center justify-between relative">
               <div className="flex items-center z-10 min-w-[100px]">
                 <button 
                   onClick={onClose} 
@@ -147,7 +147,7 @@ qr: {
               </div>
 
               <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center select-none pointer-events-none z-10">
-                <span className="text-[#1D1D1F] font-bold text-xl tracking-tight leading-tight">
+                <span className="text-[#1D1D1F] font-bold text-lg md:text-xl tracking-tight leading-tight">
                   Ayand AI
                 </span>
               </div>
@@ -164,7 +164,7 @@ qr: {
                   }`}>
                     {isAgentMuted ? <VolumeX size={16} strokeWidth={2} /> : <Volume2 size={16} strokeWidth={2} />}
                   </div>
-                  <span className={`text-[12px] font-bold tracking-wider select-none whitespace-nowrap transition-colors ${
+                  <span className={`hidden md:inline text-[12px] font-bold tracking-wider select-none whitespace-nowrap transition-colors ${
                     isAgentMuted ? 'text-[#FF3B30]' : 'text-[#1D1D1F]'
                   }`}>
                     {isAgentMuted ? "MUTED" : "SOUND ON"}
@@ -195,9 +195,9 @@ qr: {
                 >
                   
                   {/* ─── ROW 2: SPLIT VIEW ─── */}
-                  <div style={{ flex: 35 }} className="w-full flex flex-row gap-8 p-8 border-b border-white/20 min-h-0 relative overflow-hidden">
-                    <div className="w-1/2 flex flex-col gap-6 min-w-0 h-full relative z-10">
-                      <div className="flex-1 bg-white/30 backdrop-blur-[40px] border border-white/60 shadow-[0_8px_32px_rgba(0,0,0,0.04)] rounded-[32px] flex items-center justify-center overflow-hidden relative transition-all duration-500 hover:bg-white/40 group">
+                  <div style={{ flex: 35 }} className="w-full flex flex-col md:flex-row gap-4 md:gap-8 p-4 md:p-8 border-b border-white/20 min-h-0 relative overflow-auto md:overflow-hidden">
+                    <div className="w-full md:w-1/2 flex flex-col gap-4 md:gap-6 min-w-0 md:h-full relative z-10">
+                      <div className="flex-1 min-h-[180px] md:min-h-0 bg-white/30 backdrop-blur-[40px] border border-white/60 shadow-[0_8px_32px_rgba(0,0,0,0.04)] rounded-[20px] md:rounded-[32px] flex items-center justify-center overflow-hidden relative transition-all duration-500 hover:bg-white/40 group">
                              <AgentVideo videoElement={agentVideoElement} isVideoEnabled={isAgentVideoEnabled} isAgentConnected={isAgentConnected} />
                       </div>
                       <div className="shrink-0 flex flex-col gap-4">
@@ -211,8 +211,8 @@ qr: {
                           />
                       </div>
                     </div>
-                    <div className="w-1/2 flex flex-col gap-5 min-w-0 h-full relative z-10">
-                      <div className="flex-1 bg-white/30 backdrop-blur-[40px] border border-white/60 shadow-[0_8px_32px_rgba(0,0,0,0.04)] rounded-[32px] overflow-y-auto custom-scrollbar p-6" ref={messagesContainerRef}>
+                    <div className="w-full md:w-1/2 flex flex-col gap-4 md:gap-5 min-w-0 max-h-[40vh] md:max-h-none md:h-full relative z-10">
+                      <div className="flex-1 bg-white/30 backdrop-blur-[40px] border border-white/60 shadow-[0_8px_32px_rgba(0,0,0,0.04)] rounded-[20px] md:rounded-[32px] overflow-y-auto custom-scrollbar p-4 md:p-6" ref={messagesContainerRef}>
                         <MessagesList
                           messages={messages} isAgentTyping={isAgentTyping} products={products}
                           onClearProducts={onClearProducts} generatedImages={generatedImages} onClearGeneratedImages={onClearGeneratedImages}
@@ -223,7 +223,7 @@ qr: {
                         {MOCK_SUGGESTED_QUESTIONS.map((question, index) => (
                           <button 
                             key={index}
-                            className="whitespace-nowrap px-6 py-3.5 bg-white/50 hover:bg-white/80 border border-white/60 shadow-[0_2px_8px_rgba(0,0,0,0.03)] text-[#1D1D1F] font-medium text-[15px] rounded-full transition-all duration-300 active:scale-95 touch-manipulation"
+                            className="whitespace-nowrap px-4 md:px-6 py-2.5 md:py-3.5 bg-white/50 hover:bg-white/80 border border-white/60 shadow-[0_2px_8px_rgba(0,0,0,0.03)] text-[#1D1D1F] font-medium text-[13px] md:text-[15px] rounded-full transition-all duration-300 active:scale-95 touch-manipulation"
                           >
                             {question}
                           </button>
@@ -233,8 +233,8 @@ qr: {
                   </div>
 
                   {/* ─── ROW 3: PRODUCTS ─── */}
-                  <div style={{ flex: 53 }} className="w-full flex flex-col   border-b border-white/20 min-h-0 gap-5">
-                    <div className="flex-1 overflow-y-auto custom-scrollbar relative bg-white/20 backdrop-blur-[10px] rounded-[36px] border border-white/40 p-3 md:p-6 shadow-inner">
+                  <div style={{ flex: 53 }} className="w-full flex flex-col border-b border-white/20 min-h-0 gap-3 md:gap-5 max-h-[35vh] md:max-h-none">
+                    <div className="flex-1 overflow-y-auto custom-scrollbar relative bg-white/20 backdrop-blur-[10px] rounded-[24px] md:rounded-[36px] border border-white/40 p-2 md:p-6 shadow-inner">
                       <EcosystemCatalog 
                         onAskAssistant={(productName) => {
                            setInputValue(`Can you give me more technical details about the ${productName}?`);
@@ -245,45 +245,45 @@ qr: {
                   </div>
 
                   {/* ─── ROW 4: TOOLS (Updated with closed-state descriptions) ─── */}
-                  <div style={{ flex: 12 }} className="w-full flex flex-row gap-6 px-8 py-5 min-h-0">
-                     
+                  <div style={{ flex: 12 }} className="w-full flex flex-row gap-3 md:gap-6 px-3 py-2 md:px-8 md:py-5 min-h-0">
+
                      {/* 1. Mobile Handoff (QR Code) */}
-                     <div 
+                     <div
                         onClick={() => setActiveModal('qr')}
-                        className="flex-1 bg-white/50 hover:bg-white/80 backdrop-blur-[40px] shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-400 border border-white/60 rounded-[28px] flex flex-row items-center justify-start px-6 gap-5 cursor-pointer group active:scale-[0.98] relative overflow-hidden"
+                        className="flex-1 bg-white/50 hover:bg-white/80 backdrop-blur-[40px] shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-400 border border-white/60 rounded-[16px] md:rounded-[28px] flex flex-row items-center justify-center md:justify-start px-3 md:px-6 gap-3 md:gap-5 cursor-pointer group active:scale-[0.98] relative overflow-hidden"
                      >
-                        <div className="bg-white/80 p-3 rounded-2xl shadow-sm border border-white group-hover:scale-105 transition-transform duration-300">
-                          <QrCode size={40} className="text-[#1D1D1F]" strokeWidth={1.5} />
+                        <div className="bg-white/80 p-2 md:p-3 rounded-xl md:rounded-2xl shadow-sm border border-white group-hover:scale-105 transition-transform duration-300">
+                          <QrCode className="w-6 h-6 md:w-10 md:h-10 text-[#1D1D1F]" strokeWidth={1.5} />
                         </div>
-                        <div className="flex flex-col text-left">
+                        <div className="hidden md:flex flex-col text-left">
                           <span className="text-[#1D1D1F] text-[16px] font-bold tracking-tight">Mobile Handoff</span>
                           <span className="text-[#515154] text-[13px] font-medium mt-0.5">Scan to sync chat to phone</span>
                         </div>
                      </div>
 
                      {/* 2. User Information Request */}
-                     <div 
+                     <div
                         onClick={() => setActiveModal('details')}
-                        className="flex-1 bg-white/50 hover:bg-white/80 backdrop-blur-[40px] shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-400 border border-white/60 rounded-[28px] flex flex-row items-center justify-start px-6 gap-5 cursor-pointer group active:scale-[0.98]"
+                        className="flex-1 bg-white/50 hover:bg-white/80 backdrop-blur-[40px] shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-400 border border-white/60 rounded-[16px] md:rounded-[28px] flex flex-row items-center justify-center md:justify-start px-3 md:px-6 gap-3 md:gap-5 cursor-pointer group active:scale-[0.98]"
                      >
-                        <div className="bg-white/80 p-3 rounded-2xl shadow-sm border border-white group-hover:scale-105 transition-transform duration-300 flex items-center justify-center">
-                          <UserPlus size={36} className="text-[#1D1D1F] group-hover:text-[#0066CC] transition-colors" strokeWidth={1.5} />
+                        <div className="bg-white/80 p-2 md:p-3 rounded-xl md:rounded-2xl shadow-sm border border-white group-hover:scale-105 transition-transform duration-300 flex items-center justify-center">
+                          <UserPlus className="w-6 h-6 md:w-9 md:h-9 text-[#1D1D1F] group-hover:text-[#0066CC] transition-colors" strokeWidth={1.5} />
                         </div>
-                        <div className="flex flex-col text-left">
+                        <div className="hidden md:flex flex-col text-left">
                           <span className="text-[#1D1D1F] text-[16px] font-bold tracking-tight">Share Details</span>
                           <span className="text-[#515154] text-[13px] font-medium mt-0.5">Provide info for follow-ups</span>
                         </div>
                      </div>
 
                      {/* 3. Live Support */}
-                     <div 
+                     <div
                         onClick={() => setActiveModal('support')}
-                        className="flex-1 bg-white/50 hover:bg-white/80 backdrop-blur-[40px] shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-400 border border-white/60 rounded-[28px] flex flex-row items-center justify-start px-6 gap-5 cursor-pointer group active:scale-[0.98]"
+                        className="flex-1 bg-white/50 hover:bg-white/80 backdrop-blur-[40px] shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-400 border border-white/60 rounded-[16px] md:rounded-[28px] flex flex-row items-center justify-center md:justify-start px-3 md:px-6 gap-3 md:gap-5 cursor-pointer group active:scale-[0.98]"
                      >
-                        <div className="bg-white/80 p-3 rounded-2xl shadow-sm border border-white group-hover:scale-105 transition-transform duration-300 flex items-center justify-center">
-                          <Headset size={36} className="text-[#1D1D1F] group-hover:text-[#0066CC] transition-colors" strokeWidth={1.5} />
+                        <div className="bg-white/80 p-2 md:p-3 rounded-xl md:rounded-2xl shadow-sm border border-white group-hover:scale-105 transition-transform duration-300 flex items-center justify-center">
+                          <Headset className="w-6 h-6 md:w-9 md:h-9 text-[#1D1D1F] group-hover:text-[#0066CC] transition-colors" strokeWidth={1.5} />
                         </div>
-                        <div className="flex flex-col text-left">
+                        <div className="hidden md:flex flex-col text-left">
                           <span className="text-[#1D1D1F] text-[16px] font-bold tracking-tight">Live Support</span>
                           <span className="text-[#515154] text-[13px] font-medium mt-0.5">Connect to a human agent</span>
                         </div>
@@ -311,15 +311,15 @@ qr: {
                   animate={{ scale: 1, opacity: 1, y: 0 }}
                   exit={{ scale: 0.9, opacity: 0, y: 15 }}
                   transition={{ type: "spring", damping: 25, stiffness: 300 }}
-                  className="bg-white/95 backdrop-blur-3xl p-10 rounded-[40px] shadow-[0_20px_60px_rgba(0,0,0,0.15)] border border-white/50 flex flex-col items-center gap-6 max-w-[500px] text-center"
+                  className="bg-white/95 backdrop-blur-3xl p-6 md:p-10 rounded-[28px] md:rounded-[40px] shadow-[0_20px_60px_rgba(0,0,0,0.15)] border border-white/50 flex flex-col items-center gap-4 md:gap-6 max-w-[90vw] md:max-w-[500px] text-center mx-4"
                   onClick={(e) => e.stopPropagation()}
                 >
                   <div className="bg-white p-6 rounded-[28px] shadow-sm border border-gray-100 flex items-center justify-center">
                     {modalContent[activeModal].icon}
                   </div>
                   
-                  <div className="flex flex-col gap-3 px-4">
-                    <h3 className="text-[#1D1D1F] text-2xl font-bold tracking-tight">
+                  <div className="flex flex-col gap-2 md:gap-3 px-2 md:px-4">
+                    <h3 className="text-[#1D1D1F] text-xl md:text-2xl font-bold tracking-tight">
                       {modalContent[activeModal].title}
                     </h3>
                     <p className="text-[#515154] text-[15px] leading-relaxed font-medium">

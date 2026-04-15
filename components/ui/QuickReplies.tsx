@@ -24,7 +24,7 @@ export default function QuickReplies({ replies, onSelect, isVisible }: QuickRepl
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 10 }}
         transition={{ duration: 0.2 }}
-        className="absolute bottom-full left-0 right-0 pb-3 px-4"
+        className="relative md:absolute md:bottom-full left-0 right-0 pb-2 md:pb-3 px-2 md:px-4"
       >
         <div className="flex flex-wrap gap-2 justify-center items-center">
           {replies.map((reply, index) => (

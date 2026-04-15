@@ -52,7 +52,7 @@ useEffect(() => {
           relative rounded-xl overflow-hidden
           bg-slate-800/50 backdrop-blur-sm border border-white/10
           /* ✅ تغییر سایز دسکتاپ: عرض بزرگتر در حالت md */
-          w-[90%] sm:w-80 md:w-[600px] aspect-video
+          w-full md:w-[600px] aspect-video
         `}
       >
         {isVideoEnabled ? (

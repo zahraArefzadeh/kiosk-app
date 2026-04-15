@@ -174,7 +174,7 @@ export default function ChatInput({
         disabled={!isConnected || isRequestingPermission}
         className={`
           relative w-full flex flex-col items-center justify-center overflow-hidden
-          rounded-3xl h-14 md:h-14 shadow-lg
+          rounded-3xl h-12 md:h-14 shadow-lg
           transition-all active:scale-[0.98]
           ${
             isRecordingUI
