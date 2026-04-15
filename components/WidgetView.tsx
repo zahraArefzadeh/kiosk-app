@@ -233,7 +233,7 @@ qr: {
                   </div>
 
                   {/* ─── ROW 3: PRODUCTS ─── */}
-                  <div style={{ flex: 53 }} className="w-full flex flex-col p-8 border-b border-white/20 min-h-0 gap-5">
+                  <div style={{ flex: 53 }} className="w-full flex flex-col   border-b border-white/20 min-h-0 gap-5">
                     <div className="flex-1 overflow-y-auto custom-scrollbar relative bg-white/20 backdrop-blur-[10px] rounded-[36px] border border-white/40 p-3 md:p-6 shadow-inner">
                       <EcosystemCatalog 
                         onAskAssistant={(productName) => {

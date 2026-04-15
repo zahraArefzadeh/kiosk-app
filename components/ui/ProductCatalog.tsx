@@ -107,7 +107,7 @@ export default function EcosystemCatalog({ onAskAssistant }: EcosystemCatalogPro
         .no-sb { -ms-overflow-style: none; scrollbar-width: none; }
       `}} />
 
-      <div className="w-full h-full flex flex-col overflow-hidden bg-slate-50">
+      <div className="w-full h-full flex flex-col overflow-hidden   ">
         {/* Category Bar */}
         <div className="shrink-0 px-6 pt-5 pb-4">
           <div className="no-sb flex items-center gap-3 overflow-x-auto">
